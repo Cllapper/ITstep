@@ -1,22 +1,20 @@
 #include <iostream>
-
 using namespace std;
 
-int main()
-{
-    double uah, usd_rate, eur_rate, btc_rate;
-    cout << "Введите количество гривен: ";
-    cin >> uah;
-    cout << "Введите курс доллара: ";
-    cin >> usd_rate;
-    cout << "Введите курс евро: ";
-    cin >> eur_rate;
-    cout << "Введите курс биткоина: ";
-    cin >> btc_rate;
-    double usd = uah / usd_rate;
-    double eur = uah / eur_rate;
-    double btc = uah / btc_rate;
-    cout << "Гривен: " << uah << endl;
-    cout << "Долларов: " << usd << endl;
-    cout << "Евро: " << eur << endl;
-    cout << "Биткоинов: " << btc
+int main() {
+    int seconds;
+    cout << "Введите время в секундах: ";
+    cin >> seconds;
+
+    // Вычисляем количество оставшихся секунд
+    int remainingSeconds = 24 * 60 * 60 - seconds;
+
+    // Преобразуем оставшиеся секунды в часы, минуты и секунды
+    int hours = remainingSeconds / 3600;
+    int minutes = (remainingSeconds % 3600) / 60;
+    int secondsLeft = remainingSeconds % 60;
+
+    cout << "Осталось " << hours << " часов " << minutes << " минут " << secondsLeft << " секунд до полуночи." << endl;
+
+    return 0;
+}
