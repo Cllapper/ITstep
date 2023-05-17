@@ -1,18 +1,18 @@
 #include <iostream>
-#include <cmath>
-
 using namespace std;
 
-const double PI = 3.14159;
+int main() {
+    int totalStudents, debtors;
+    cout << "Введите количество студентов: ";
+    cin >> totalStudents;
+    cout << "Введите количество должников: ";
+    cin >> debtors;
 
-int main()
-{
-    double radius, area, length;
-    cout << "Введите радиус окружности: ";
-    cin >> radius;
-    area = PI * pow(radius, 2);
-    length = 2 * PI * radius;
-    cout << "Площадь окружности: " << area << endl;
-    cout << "Длина окружности: " << length << endl;
+    // Вычисляем процент должников от общего числа студентов
+    double percentage = (debtors * 100.0) / totalStudents;
+
+    cout << "Процент должников: " << percentage << "%" << endl;
+
     return 0;
 }
+
