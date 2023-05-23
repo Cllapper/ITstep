@@ -1,20 +1,17 @@
 #include <iostream>
-using namespace std;
+
+const double poundsToGrams = 453.592;
 
 int main() {
-    double principalAmount, interestRate;
-    int months;
-    cout << "Введите сумму вклада в гривнах: ";
-    cin >> principalAmount;
-    cout << "Введите срок вклада в месяцах: ";
-    cin >> months;
-    cout << "Введите процентную ставку за год: ";
-    cin >> interestRate;
+    double pounds;
+    std::cout << "Введите значение в фунтах: ";
+    std::cin >> pounds;
 
-    // Вычисляем конечную сумму с учетом процентов
-    double finalAmount = principalAmount + (principalAmount * interestRate * months) / (12 * 100);
+    double kilograms = pounds * poundsToGrams / 1000;
+    std::cout << "Вес в килограммах: " << kilograms << std::endl;
 
-    cout << "Конечная сумма: " << finalAmount << " гривен." << endl;
+    double convertedPounds = kilograms * 1000 / poundsToGrams;
+    std::cout << "Обратная конвертация: " << convertedPounds << " фунтов" << std::endl;
 
     return 0;
 }
