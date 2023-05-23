@@ -1,18 +1,18 @@
 #include <iostream>
-using namespace std;
 
 int main() {
-    int totalStudents, debtors;
-    cout << "Введите количество студентов: ";
-    cin >> totalStudents;
-    cout << "Введите количество должников: ";
-    cin >> debtors;
+    double depositAmount;
+    double interestRate;
 
-    // Вычисляем процент должников от общего числа студентов
-    double percentage = (debtors * 100.0) / totalStudents;
+    std::cout << "Введите сумму денежного вклада в гривнах: ";
+    std::cin >> depositAmount;
 
-    cout << "Процент должников: " << percentage << "%" << endl;
+    std::cout << "Введите процент годовых, которые выплачивает банк: ";
+    std::cin >> interestRate;
+
+    double monthlyInterest = depositAmount * (interestRate / 100) / 12;
+
+    std::cout << "Сумма денег, выплачиваемых банком вкладчику каждый месяц: " << monthlyInterest << std::endl;
 
     return 0;
 }
-
