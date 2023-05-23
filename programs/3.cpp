@@ -1,16 +1,18 @@
 #include <iostream>
-#include <iomanip>
-using namespace std;
 
 int main() {
-    double number;
-    cout << "Введите дробное число: ";
-    cin >> number;
+    int num;
+    std::cout << "Введите трехзначное число: ";
+    std::cin >> num;
 
-    // Округляем число до двух знаков после запятой
-    double roundedNumber = round(number * 100) / 100;
+    // Извлекаем цифры
+    int firstDigit = num / 100;
+    int lastDigit = num % 10;
 
-    cout << "Округленное число: " << fixed << setprecision(2) << roundedNumber << endl;
+    // Формируем новое число без средней цифры
+    int newNum = firstDigit * 10 + lastDigit;
+
+    std::cout << "Новое число: " << newNum << std::endl;
 
     return 0;
 }
