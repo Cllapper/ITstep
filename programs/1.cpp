@@ -1,26 +1,19 @@
 #include <iostream>
-using namespace std;
 
 int main() {
-    double size, speed;
-    cout << "Введите размер фильма в ГБ: ";
-    cin >> size;
-    cout << "Введите скорость интернет-соединения в Мб/с: ";
-    cin >> speed;
+    int num1, num2;
+    std::cout << "Введите два трехзначных числа: ";
+    std::cin >> num1 >> num2;
 
-    // Конвертируем размер фильма в мегабайты
-    double sizeInMB = size * 1024;
+    // Извлекаем средние цифры
+    int midDigitNum1 = (num1 / 10) % 10;
+    int midDigitNum2 = (num2 / 10) % 10;
 
-    // Вычисляем время скачивания в секундах
-    double timeInSeconds = sizeInMB / (speed * 8);
+    // Меняем средние цифры
+    int newNum1 = num1 - midDigitNum1 * 10 + midDigitNum2 * 10;
+    int newNum2 = num2 - midDigitNum2 * 10 + midDigitNum1 * 10;
 
-    // Преобразуем время в часы, минуты и секунды
-    int hours = timeInSeconds / 3600;
-    int minutes = (int(timeInSeconds) % 3600) / 60;
-    int seconds = int(timeInSeconds) % 60;
-
-    cout << "Время скачивания: " << hours << " часов " << minutes << " минут " << seconds << " секунд." << endl;
+    std::cout << "Новые числа: " << newNum1 << " и " << newNum2 << std::endl;
 
     return 0;
 }
-
