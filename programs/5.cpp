@@ -1,20 +1,20 @@
 #include <iostream>
-using namespace std;
 
 int main() {
-    int seconds;
-    cout << "Введите время в секундах: ";
-    cin >> seconds;
+    double price;
+    double amount;
 
-    // Вычисляем количество оставшихся секунд
-    int remainingSeconds = 24 * 60 * 60 - seconds;
+    std::cout << "Введите стоимость товара: ";
+    std::cin >> price;
 
-    // Преобразуем оставшиеся секунды в часы, минуты и секунды
-    int hours = remainingSeconds / 3600;
-    int minutes = (remainingSeconds % 3600) / 60;
-    int secondsLeft = remainingSeconds % 60;
+    std::cout << "Введите сумму денег: ";
+    std::cin >> amount;
 
-    cout << "Осталось " << hours << " часов " << minutes << " минут " << secondsLeft << " секунд до полуночи." << endl;
+    int quantity = amount / price;
+    double change = amount - (quantity * price);
+
+    std::cout << "Количество товара: " << quantity << std::endl;
+    std::cout << "Сдача: " << change << std::endl;
 
     return 0;
 }
