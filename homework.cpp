@@ -1,145 +1,107 @@
 #include <iostream>
+
 using namespace std;
 
 int main() {
-    int choice;
-    int score = 0;
+    // Задача 1
+    int x1, y1, x2, y2;
+    cout << "1. Введите координаты первой точки (x1 y1): ";
+    cin >> x1 >> y1;
+    cout << "   Введите координаты второй точки (x2 y2): ";
+    cin >> x2 >> y2;
 
-    cout << "Выберите задание: " << endl;
-    cout << "1. Определение названия дня недели." << endl;
-    cout << "2. Игра 'О, счастливчик!'." << endl;
-    cin >> choice;
+    if (x1 == x2)
+        cout << "   Прямая параллельна оси ординат." << endl;
+    else if (y1 == y2)
+        cout << "   Прямая параллельна оси абсцисс." << endl;
+    else
+        cout << "   Прямая не параллельна ни одной из осей." << endl;
 
-    if (choice == 1) {
-        // Задание 1: Определение названия дня недели
+    // Задача 2
+    double number;
+    cout << "2. Введите число: ";
+    cin >> number;
 
-        int dayNumber;
+    int integerPart = static_cast<int>(number);
+    double decimalPart = number - integerPart;
 
-        cout << "Введите номер дня недели (1-7): ";
-        cin >> dayNumber;
+    if (decimalPart != 0.0)
+        cout << "   Число имеет вещественную часть." << endl;
+    else
+        cout << "   Число не имеет вещественной части." << endl;
 
-        switch (dayNumber) {
-            case 1:
-                cout << "Понедельник" << endl;
-                break;
-            case 2:
-                cout << "Вторник" << endl;
-                break;
-            case 3:
-                cout << "Среда" << endl;
-                break;
-            case 4:
-                cout << "Четверг" << endl;
-                break;
-            case 5:
-                cout << "Пятница" << endl;
-                break;
-            case 6:
-                cout << "Суббота" << endl;
-                break;
-            case 7:
-                cout << "Воскресенье" << endl;
-                break;
-            default:
-                cout << "Неверный номер дня недели!" << endl;
-                break;
-        }
-    } else if (choice == 2) {
-        // Задание 2
+    // Задача 3
+    int hours, minutes, seconds;
+    cout << "3. Введите текущее время (часы минуты секунды): ";
+    cin >> hours >> minutes >> seconds;
 
-        cout << "Добро пожаловать в игру 'О, счастливчик!'." << endl;
-        cout << "Ответьте на следующие вопросы." << endl;
+    bool isValidTime = (hours >= 0 && hours < 24) &&
+                       (minutes >= 0 && minutes < 60) &&
+                       (seconds >= 0 && seconds < 60);
 
-        // Вопрос 1
-        cout << "Вопрос 1: Сколько будет 2 + 2?" << endl;
-        cout << "a) 3" << endl;
-        cout << "b) 4" << endl;
-        cout << "c) 5" << endl;
+    if (isValidTime)
+        cout << "   Время корректное." << endl;
+    else
+        cout << "   Время некорректное." << endl;
 
-        char answer1;
-        cin >> answer1;
+    // Задача 4
+    int ticketNumber;
+    cout << "4. Введите номер билета: ";
+    cin >> ticketNumber;
 
-        if (answer1 == 'b') {
-            cout << "Правильно!" << endl;
-            score++;
-        } else {
-            cout << "Неправильно! Игра окончена." << endl;
+    int digit1 = ticketNumber / 100000;
+    int digit2 = (ticketNumber / 10000) % 10;
+    int digit3 = (ticketNumber / 1000) % 10;
+    int digit4 = (ticketNumber / 100) % 10;
+    int digit5 = (ticketNumber / 10) % 10;
+    int digit6 = ticketNumber % 10;
+
+    if ((digit1 + digit2 + digit3) == (digit4 + digit5 + digit6))
+        cout << "   Билет является счастливым." << endl;
+    else
+        cout << "   Билет не является счастливым." << endl;
+
+    // Задача 5*
+    int day, month, year;
+    cout << "5*. Введите дату (день месяц год): ";
+    cin >> day >> month >> year;
+
+    int daysInMonth = 0;
+
+    switch (month) {
+        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+            daysInMonth = 31;
+            break;
+        case 4: case 6: case 9: case 11:
+            daysInMonth = 30;
+            break;
+        case 2:
+            if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+                daysInMonth = 29;
+            else
+                daysInMonth = 28;
+            break;
+        default:
+            cout << "   Некорректный месяц." << endl;
             return 0;
-        }
-
-        // Вопрос 2
-        cout << "Вопрос 2: Какое из чисел является простым?" << endl;
-        cout << "a) 20" << endl;
-        cout << "b) 13" << endl;
-        cout << "c) 36" << endl;
-
-        char answer2;
-        cin >> answer2;
-
-        if (answer2 == 'b') {
-            cout << "Правильно!" << endl;
-            score++;
-        } else {
-            cout << "Неправильно! Игра окончена." << endl;
-            return 0;
-        }
-
-        // Вопрос 3
-        cout << "Вопрос 3: Какое животное является символом США?" << endl;
-        cout << "a) Орел" << endl;
-        cout << "b) Сокол" << endl;
-        cout << "c) Жаворонок" << endl;
-
-        char answer3;
-        cin >> answer3;
-
-        if (answer3 == 'a') {
-            cout << "Правильно!" << endl;
-            score++;
-        } else {
-            cout << "Неправильно! Игра окончена." << endl;
-            return 0;
-        }
-
-        // Вопрос 4
-        cout << "Вопрос 4: Какой год был провозглашен первым годом новой эры (Anno Domini)?" << endl;
-        cout << "a) 1 год" << endl;
-        cout << "b) 1000 год" << endl;
-        cout << "c) 476 год" << endl;
-
-        char answer4;
-        cin >> answer4;
-
-        if (answer4 == 'a') {
-            cout << "Правильно!" << endl;
-            score++;
-        } else {
-            cout << "Неправильно! Игра окончена." << endl;
-            return 0;
-        }
-
-        // Вопрос 5
-        cout << "Вопрос 5: Кто написал роман 'Война и мир'?" << endl;
-        cout << "a) Лев Толстой" << endl;
-        cout << "b) Федор Достоевский" << endl;
-        cout << "c) Иван Тургенев" << endl;
-
-        char answer5;
-        cin >> answer5;
-
-        if (answer5 == 'a') {
-            cout << "Правильно!" << endl;
-            score++;
-        } else {
-            cout << "Неправильно! Игра окончена." << endl;
-            return 0;
-        }
-
-        cout << "Поздравляем! Вы ответили правильно на все вопросы!" << endl;
-        cout << "Ваш итоговый счет: " << score << "/" << 5 << endl;
-    } else {
-        cout << "Неверный выбор задания!" << endl;
     }
+
+    if (day < 1 || day > daysInMonth) {
+        cout << "   Некорректный день." << endl;
+        return 0;
+    }
+
+    day++;
+    if (day > daysInMonth) {
+        day = 1;
+        month++;
+        if (month > 12) {
+            month = 1;
+            year++;
+        }
+    }
+
+    cout << "   Завтра будет: " << day << " " << month << " " << year << endl;
 
     return 0;
 }
