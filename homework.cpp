@@ -1,60 +1,99 @@
 #include <iostream>
-#include <cmath>
 
 int main() {
-    // ЗАДАНИЕ 1
-    int a;
-    std::cout << "Введите значение a: ";
-    std::cin >> a;
+    int choice;
+    std::cout << "Выберите задание (1-4): ";
+    std::cin >> choice;
 
-    int sum = 0;
-    for (int i = a; i <= 500; ++i) {
-        sum += i;
+    // Задание 1
+    if (choice == 1) {
+        int number;
+        std::cout << "Введите число: ";
+        std::cin >> number;
+
+        int count = 0;
+        int sum = 0;
+        int zeros = 0;
+
+        int temp = number;
+        while (temp != 0) {
+            int digit = temp % 10;
+            count++;
+            sum += digit;
+            if (digit == 0) {
+                zeros++;
+            }
+            temp /= 10;
+        }
+
+        float average = static_cast<float>(sum) / count;
+
+        std::cout << "Количество цифр: " << count << std::endl;
+        std::cout << "Сумма цифр: " << sum << std::endl;
+        std::cout << "Среднее арифметическое: " << average << std::endl;
+        std::cout << "Количество нулей: " << zeros << std::endl;
     }
 
-    std::cout << "Сумма целых чисел от " << a << " до 500: " << sum << std::endl;
+    // Задание 2
+    if (choice == 2) {
+        int size;
+        std::cout << "Введите размер клеточки: ";
+        std::cin >> size;
 
-    // ЗАДАНИЕ 2
-    int x, y;
-    std::cout << "Введите целое число x: ";
-    std::cin >> x;
-    std::cout << "Введите целое число y: ";
-    std::cin >> y;
-
-    int result = pow(x, y);
-
-    std::cout << x << " в степени " << y << " = " << result << std::endl;
-
-    // ЗАДАНИЕ 3
-    int sum = 0;
-
-    for (int i = 1; i <= 1000; ++i) {
-        sum += i;
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 5; j++) {
+                for (int k = 0; k < size; k++) {
+                    if ((i + j) % 2 == 0) {
+                        for (int l = 0; l < size; l++) {
+                            std::cout << "*";
+                        }
+                    } else {
+                        for (int l = 0; l < size; l++) {
+                            std::cout << "-";
+                        }
+                    }
+                }
+                std::cout << "-";
+            }
+            std::cout << std::endl;
+        }
     }
 
-    double average = static_cast<double>(sum) / 1000;
+    // Задание 3
+    if (choice == 3) {
+        int numPeople;
+        std::cout << "Введите количество человек: ";
+        std::cin >> numPeople;
 
-    std::cout << "Среднее арифметическое всех целых чисел от 1 до 1000: " << average << std::endl;
+        float totalCost = 0.0;
 
-    // ЗАДАНИЕ 4
-    int a;
-    std::cout << "Введите значение a (1 <= a <= 20): ";
-    std::cin >> a;
+        for (int i = 1; i <= numPeople; i++) {
+            std::cout << "Заказ для человека " << i << ":" << std::endl;
 
-    int product = 1;
-    for (int i = a; i <= 20; ++i) {
-        product *= i;
+            // Вывод меню и выбор элементов заказа
+            // Расчет стоимости заказа для текущего человека
+
+            float personCost;
+            std::cout << "Введите стоимость заказа для человека " << i << ": ";
+            std::cin >> personCost;
+
+            totalCost += personCost;
+        }
+
+        std::cout << "Общая сумма заказа: " << totalCost << std::endl;
     }
 
-    std::cout << "Произведение всех целых чисел от " << a << " до 20: " << product << std::endl;
+    // Задание 4
+    if (choice == 4) {
+        char columns[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
+        int rows = 10;
 
-    // ЗАДАНИЕ 5
-    int k;
-    std::cout << "Введите номер варианта k: ";
-    std::cin >> k;
-
-    for (int i = 2; i <= 10; ++i) {
-        std::cout << k << " x " << i << " = " << k * i << std::endl;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < 10; j++) {
+                std::cout << columns[j] << i << " ";
+            }
+            std::cout << std::endl;
+        }
     }
 
     return 0;
